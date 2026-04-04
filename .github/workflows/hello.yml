@@ -2,20 +2,23 @@
 name: hello-brother
 
 # runs on a trigger
-on: workflow_dispatch
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
 # push:
- #  branches: [main]
+#  branches: [main]
 
 # these are jobs inside the workflow
 jobs:
-
-   # this is the name of the jobs
+  # this is the name of the jobs
   greet:
-   # This is a GitHub runner, and each job runs on a runner
-   runs-on: ubuntu-latest
-   steps:
-     - name: say hello to users
-       run: echo "Hello brother, Welcome back"
+    # This is a GitHub runner, and each job runs on a runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello to users
+        run: echo "Hello brother, Welcome back"
 
-     - name: say hello to username
-       run: echo "Hello $USER"
+      - name: say hello to username
+        run: echo "Hello $USER"
