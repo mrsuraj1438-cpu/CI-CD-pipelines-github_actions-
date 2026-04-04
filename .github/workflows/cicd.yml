@@ -1,0 +1,32 @@
+name: CI/CD-Pipeline
+
+on:
+    workflow_dispatch:
+
+jobs:
+    code:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              run: echo "Code clone from github"
+
+    build:
+        needs: code
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build the Docker Container
+              run: echo "Docker Container build"
+
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test the Container
+              run: echo "Testing the container"
+
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy the container
+              run: echo "deploy the container"
