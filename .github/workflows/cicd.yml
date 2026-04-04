@@ -1,10 +1,22 @@
 name: CI/CD-Pipeline
 
 on:
-    push:
-        branches: [main]
-        paths:
-            - "**.html"
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: This is the environment value where this  workflow run
+                required: true
+                default: "dev"
+                type: choice
+                options:
+                    - dev
+                    - staging
+                    - prod
+
+    #push:
+    #branches: [main]
+    #paths:
+    #    - "**.html"
 
 jobs:
     code:
