@@ -4,27 +4,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Suraj | DevOps Engineer</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #020617;
+            color: white;
+        }
+
+        /* GRID BACKGROUND */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 150, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 150, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        header a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            position: relative;
+        }
+
+        header a.active,
+        header a:hover {
+            color: #00ff88;
+        }
+
+        header a.active::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #00ff88;
+            bottom: -5px;
+            left: 0;
+        }
+
+        /* SECTION */
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 0.6s;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+        }
+
+        .terminal {
+            font-family: 'Share Tech Mono', monospace;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: #00ff88;
+            text-shadow: none;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background: #00ff88;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0
+            }
+        }
+
+        .subtext {
+            margin-top: 15px;
+            max-width: 600px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* BUTTON */
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00ff88;
+            color: black;
+            box-shadow: 0 0 15px #00ff88;
+        }
+
+        /* CARDS */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #00ff88;
+        }
+
+        h2 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
+
     <header>
-        <h1>My portfolio website</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
     </header>
-    <hr>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Short bio highlighting skills.</p>
+
+    <!-- HERO -->
+    <section id="home" class="hero show">
+        <div class="terminal">$ whoami</div>
+
+        <h1 id="typing"></h1>
+
+        <p class="subtext">
+            Building scalable systems, automating deployments, and mastering DevOps tools.
+        </p>
+
+        <button class="btn" onclick="scrollToSection('projects')">View Projects</button>
     </section>
-    <footer>
-        <p>&copy; 2024 Name</p>
-    </footer>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="card">
+            <h2>DevOps Stack</h2>
+            <p>⚙️ Linux</p>
+            <p>🔧 Git & GitHub</p>
+            <p>🚀 GitHub Actions</p>
+            <p>🐳 Docker</p>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="card">
+            <h2>Projects</h2>
+            <p>✔ CI/CD Pipeline using GitHub Actions</p>
+            <p>✔ Dockerized Applications</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="card">
+            <h2>Contact</h2>
+            <p>Email: your-email@example.com</p>
+            <button class="btn">Download Resume</button>
+        </div>
+    </section>
+
+    <script>
+        /* Typing Effect */
+        const text = "DevOps Engineer";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typing").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 80);
+            }
+        }
+        type();
+
+        /* Scroll Animation */
+        const sections = document.querySelectorAll("section");
+        window.addEventListener("scroll", () => {
+            sections.forEach(sec => {
+                const top = window.scrollY;
+                const offset = sec.offsetTop - 200;
+                if (top > offset) {
+                    sec.classList.add("show");
+                }
+            });
+        });
+
+        /* Active Navbar */
+        const navLinks = document.querySelectorAll("header a");
+        window.addEventListener("scroll", () => {
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 300;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute("id");
+
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach(link => {
+                        link.classList.remove("active");
+                        document.querySelector('header a[href*=' + id + ']').classList.add("active");
+                    });
+                }
+            });
+        });
+
+        /* Button scroll */
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
 </body>
 
 </html>
