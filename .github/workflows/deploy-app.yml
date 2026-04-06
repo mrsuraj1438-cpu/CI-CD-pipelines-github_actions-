@@ -4,12 +4,13 @@ on: workflow_dispatch
 
 jobs:
     deploy:
+        runs-on: self-hosted
         environment:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
         runs-on: self-hosted
         steps:
             - name: code checkout
               uses: actions/checkout@v5
-
+           
             - name: Deploy with docker_compose
               run: docker compose up -d --build
