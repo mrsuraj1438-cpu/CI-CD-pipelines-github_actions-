@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
     deploy:
         runs-on: self-hosted
-        environment:
+        env:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
         steps:
             - name: code checkout
