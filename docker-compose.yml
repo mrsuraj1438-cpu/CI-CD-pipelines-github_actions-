@@ -1,5 +1,5 @@
 services:
   deploy:
-    build: "${DOCKERHUB_USER}/git-hub-actions-app:latest"
+    image: "${DOCKERHUB_USER}/git-hub-actions-app:latest"
     ports:
       - "8088:80"
