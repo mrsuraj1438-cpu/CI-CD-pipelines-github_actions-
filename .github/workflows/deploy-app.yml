@@ -11,5 +11,8 @@ jobs:
             - name: code checkout to repository
               uses: actions/checkout@v5
 
+            - name: Set up Docker Compose
+              uses: docker/setup-compose-action@v2
+
             - name: Deploy with docker_compose
               run: docker-compose up -d --build
