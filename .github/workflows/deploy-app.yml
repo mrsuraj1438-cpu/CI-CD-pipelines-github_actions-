@@ -8,7 +8,7 @@ jobs:
         env:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
         steps:
-            - name: code checkout
+            - name: code checkout to repository
               uses: actions/checkout@v5
 
             - name: Deploy with docker_compose
