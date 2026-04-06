@@ -1,8 +1,14 @@
 name: python-matrix
 
+<<<<<<< HEAD
 on:
     #push:
     # branches: [main]
+=======
+on: 
+    push:
+       branches: [main]
+>>>>>>> d0a443c6ba65bd4f272b1c990bc8c23b26679652
     #workflow_dispatch:
 
 jobs:
