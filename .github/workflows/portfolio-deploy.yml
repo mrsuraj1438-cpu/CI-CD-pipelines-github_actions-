@@ -1,11 +1,12 @@
 name: Portfolio
 
 on:
-    push:
-        branches: [main]
-        paths:
-            - "**.html"
-    workflow_dispatch:
+    # push:
+    workflow_dispatch
+    #  branches: [main]
+    #   paths:
+    # - "**.html"
+    #workflow_dispatch:
 permissions:
     contents: read
     pages: write
