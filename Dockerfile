@@ -7,7 +7,7 @@ COPY requirements.txt .
 
 ADD /templates/index.html /app/templates/index.html
 
-RUN pip install -r requirements.txt --target /app/package
+RUN pip install -r requirements.txt --target=/app/package
 
 
 # stage 2: deployer
@@ -18,3 +18,5 @@ WORKDIR /app
 
 COPY --from=builder /app/package /app/package
 COPY --from=builder /app /app/
+
+EXPOSE 5000
