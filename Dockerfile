@@ -1,28 +1,14 @@
 
-FROM python:3.14-slim AS builder
+FROM python:3.14
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY . .
 
-ADD /templates/index.html /app/templates/index.html
-
-RUN pip install -r requirements.txt --target=/app/package
-
-
-# stage 2: deployer
-
-FROM gcr.io/distroless/python3-debian12
-
-WORKDIR /app
-
-COPY --from=builder /app/package /app/package
-COPY --from=builder /app /app/
-
-ENV PYTHONPATH=/app/package
-
-ENV PYTHONUNBUFFERED=1
+RUN pip install -r requirements.txt
 
 EXPOSE 80
 
-CMD [ "app.py" ]
+CMD ["python", "app.py"]
+
+
