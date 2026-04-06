@@ -1,7 +1,11 @@
-name: python-check-flaskcode
-on: 
+name: python-matrix
+
+on:
     push:
-       branches: [main]
+        branches:
+            - main
+    #push:
+    # branches: [main]
     #workflow_dispatch:
 
 jobs:
