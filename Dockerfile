@@ -19,4 +19,10 @@ WORKDIR /app
 COPY --from=builder /app/package /app/package
 COPY --from=builder /app /app/
 
-EXPOSE 5000
+ENV PYTHONPATH=/app/package
+
+ENV PYTHONUNBUFFERED=1
+
+EXPOSE 80
+
+CMD [ "app.py" ]
