@@ -1,4 +1,7 @@
-name: Check flask code
+# package: issue ya vulnerabilities in dependencies
+# pip audit
+
+name: dependency-scan
 
 on:
     push:
@@ -9,7 +12,7 @@ on:
     #workflow_dispatch:
 
 jobs:
-    validate:
+    dependency-scan:
         runs-on: ubuntu-latest
         # strategy:
         # fail-fast: false
@@ -19,13 +22,13 @@ jobs:
             - name: Check out repository code
               uses: actions/checkout@v5
 
-            - name: Set up Python ${{ matrix.python-version }}
+            - name: Set up Python 3.14
               uses: actions/setup-python@v5
               with:
-                  python-version: ${{ matrix.python-version}}
+                  python-version: "3.14"
 
-            - name: Install dependencies
-              run: pip install -r requirements.txt
+            - name: Install pip Audit
+              run: pip install pip-audit
 
-            - name: run linter
-              run: flake8 app.py
+            - name: Auto Dependency Scan
+              run: pip-audit -r requirements.txt

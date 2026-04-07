@@ -1,0 +1,17 @@
+# Scan the Dockerfile for issues & CVE's
+
+name: Docker Lint
+
+on: workflow_dispatch
+
+jobs:
+    validate-dockerfile:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v5
+
+            - name: Validate Dockerfile
+              uses: hadolint/hadolint-action@v3.1.0
+              with:
+                  dockerfile: Dockerfile
