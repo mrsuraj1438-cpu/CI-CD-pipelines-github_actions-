@@ -1,0 +1,18 @@
+name: Deploy flask App to EC2
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    env:
+      DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
+    steps:
+      - name: code checkout to repository
+        uses: actions/checkout@v5
+
+      - name: Set up Docker Compose
+        uses: docker/setup-compose-action@v2
+
+      - name: Deploy with docker_compose
+        run: docker compose down $$ docker compose up -d --build --force-recreate
