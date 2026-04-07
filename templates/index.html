@@ -5,56 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps Zero To Hero</title>
-
     <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: "Segoe UI", sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            background: radial-gradient(circle at top, #1f1c2c, #0f0c29 70%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #e0e0e0;
         }
 
         .container {
             text-align: center;
-            max-width: 700px
+            padding: 2rem;
+            max-width: 750px;
         }
 
         h1 {
             font-size: 2.7rem;
-            background: linear-gradient(90deg, #00f5a0, #00d9f5);
+            margin-bottom: 0.6rem;
+            background: linear-gradient(90deg, #00f5ff, #7b2ff7, #ff4ecd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* subtitle */
-        .subtitle {
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: #cbd5e1;
-            letter-spacing: 0.04em;
-        }
-
-        /* badge */
         .badge {
-            margin: 1.2rem 0 2rem;
             display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            border: 1px solid #00d9f5;
-            font-size: 0.8rem;
-            color: #00f5a0;
+            margin: 1rem 0 1.5rem;
+            padding: 0.4rem 1.3rem;
+            border: 1px solid rgba(123, 47, 247, 0.6);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            color: #c4b5fd;
         }
 
-        /* cards */
+        .subtext {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
         .cards {
             display: flex;
             gap: 1rem;
@@ -63,64 +61,72 @@
         }
 
         .card {
-            padding: 1.2rem;
-            min-width: 150px;
-            border-radius: 12px;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1.5rem 1.8rem;
+            min-width: 150px;
+            flex: 1;
+            backdrop-filter: blur(10px);
+            transition: 0.3s ease;
         }
 
-        /* pipeline */
-        .status {
-            margin-top: 2rem;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(123, 47, 247, 0.6);
+            box-shadow: 0 0 20px rgba(123, 47, 247, 0.3);
         }
 
-        .status span {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            background: #111;
-            border: 1px solid #444;
+        .card span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
         }
 
-        .success {
-            color: #00ff9f;
-            border-color: #00ff9f
+        .card strong {
+            font-size: 1.3rem;
+            color: #f9fafb;
         }
     </style>
 </head>
 
 <body>
-
     <div class="container">
         <h1>DevOps Zero To Hero</h1>
 
-        <!-- unique line -->
-        <div class="subtitle">
-            Flask Application Deployed using GitHub Actions on Self-Hosted Runner 🚀
-        </div>
-
-        <!-- your batch line -->
         <div class="badge">Josh Batch 10</div>
 
-        <div class="cards">
-            <div class="card">Flask 3.1</div>
-            <div class="card">Python 3.14</div>
-            <div class="card">AWS ECS</div>
+        <div class="subtext">
+            Built • Tested • Linted • Deployed via GitHub Actions (Self-Hosted Runner)
         </div>
 
-        <div class="status">
-            <span class="success">✔ Build</span>
-            <span class="success">✔ Test</span>
-            <span class="success">✔ Lint</span>
-            <span class="success">✔ Deploy</span>
+        <div class="cards">
+            <div class="card">
+                <span>Framework</span>
+                <strong>Flask 3.1</strong>
+            </div>
+
+            <div class="card">
+                <span>Runtime</span>
+                <strong>Python 3.14</strong>
+            </div>
+
+
+
+            <div class="card">
+                <span>Deploy</span>
+                <strong>AWS ECS</strong>
+            </div>
+
+            <div class="card">
+                <span>CI/CD</span>
+                <strong>GitHub Actions</strong>
+            </div>
         </div>
     </div>
-
 </body>
 
 </html>
