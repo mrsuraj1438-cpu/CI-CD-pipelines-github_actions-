@@ -5,48 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps Zero To Hero</title>
+
     <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box
         }
 
         body {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #e0e0e0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
         }
 
         .container {
             text-align: center;
-            padding: 2rem;
-            max-width: 640px;
+            max-width: 700px
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #00d2ff, #7b2ff7);
+            font-size: 2.7rem;
+            background: linear-gradient(90deg, #00f5a0, #00d9f5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .badge {
-            display: inline-block;
-            margin: 1rem 0 2rem;
-            padding: 0.4rem 1.2rem;
-            border: 1px solid #7b2ff7;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            color: #c4b5fd;
-            letter-spacing: 0.05em;
+        /* subtitle */
+        .subtitle {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            letter-spacing: 0.04em;
         }
 
+        /* badge */
+        .badge {
+            margin: 1.2rem 0 2rem;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid #00d9f5;
+            font-size: 0.8rem;
+            color: #00f5a0;
+        }
+
+        /* cards */
         .cards {
             display: flex;
             gap: 1rem;
@@ -55,49 +63,64 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem 1.8rem;
+            padding: 1.2rem;
             min-width: 150px;
-            flex: 1;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .card span {
-            display: block;
+        /* pipeline */
+        .status {
+            margin-top: 2rem;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .status span {
+            padding: 6px 12px;
+            border-radius: 20px;
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #9ca3af;
-            margin-bottom: 0.4rem;
+            background: #111;
+            border: 1px solid #444;
         }
 
-        .card strong {
-            font-size: 1.25rem;
-            color: #f9fafb;
+        .success {
+            color: #00ff9f;
+            border-color: #00ff9f
         }
     </style>
 </head>
 
 <body>
+
     <div class="container">
         <h1>DevOps Zero To Hero</h1>
+
+        <!-- unique line -->
+        <div class="subtitle">
+            Flask Application Deployed using GitHub Actions on Self-Hosted Runner 🚀
+        </div>
+
+        <!-- your batch line -->
         <div class="badge">Josh Batch 10</div>
+
         <div class="cards">
-            <div class="card">
-                <span>Framework</span>
-                <strong>Flask 3.1</strong>
-            </div>
-            <div class="card">
-                <span>Runtime</span>
-                <strong>Python 3.14</strong>
-            </div>
-            <div class="card">
-                <span>Deploy</span>
-                <strong>AWS ECS</strong>
-            </div>
+            <div class="card">Flask 3.1</div>
+            <div class="card">Python 3.14</div>
+            <div class="card">AWS ECS</div>
+        </div>
+
+        <div class="status">
+            <span class="success">✔ Build</span>
+            <span class="success">✔ Test</span>
+            <span class="success">✔ Lint</span>
+            <span class="success">✔ Deploy</span>
         </div>
     </div>
+
 </body>
 
 </html>
