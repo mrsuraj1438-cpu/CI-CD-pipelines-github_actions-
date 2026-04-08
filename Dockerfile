@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir --user -r requirements.txt --target=/app/package
 COPY . .
 
 # -------- Stage 2: Distroless --------
-FROM gcr.io/distroless/python3-debian12
+FROM gcr.io/distroless/python3-debian12:nonroot
 
 WORKDIR /app
 
