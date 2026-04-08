@@ -1,9 +1,6 @@
 name: devSecOps Pipeline
 
-on:
-    push:
-        branches:
-            - main
+on: workflow_dispatch
 
 jobs:
     # CI (continuous integration)
