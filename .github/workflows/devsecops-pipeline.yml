@@ -29,6 +29,8 @@ jobs:
         needs: [build]
         uses: ./.github/workflows/image-scan.yml
         secrets: inherit
+
+    # CD (continuous deployment) - deploy to production server if the image scan is successful
     deploy:
         needs: [trivy]
         uses: ./.github/workflows/deploy-to-server.yml
