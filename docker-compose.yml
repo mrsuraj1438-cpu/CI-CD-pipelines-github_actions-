@@ -1,5 +1,5 @@
 services:
   deploy:
-    image: "${DOCKERHUB_USER}/git-hub-actions-app:latest"
+    image: "${DOCKERHUB_USER}/flask-app:${DOCKER_TAG}"
     ports:
       - "80:80"
