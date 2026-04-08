@@ -1,0 +1,20 @@
+# Check the dependencies for CVE's
+# tool: pip-audit can be used for dependency scanning for python projects
+
+name: Dependency Sacan
+
+on:
+    workflow_call:
+
+jobs:
+    dependency-scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v5
+
+            - name: install pip-audit
+              run: pip install pip-audit
+
+            - name: Audit dependency scan
+              run: pip-audit -r requirements.txt
