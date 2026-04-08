@@ -1,30 +1,23 @@
-# -------- Stage 1: Build --------
-FROM python:3.11-slim AS builder
+# Base image (OS)
+
+FROM python:3.14-slim
+
+# Working directory
 
 WORKDIR /app
 
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt --target=/app/package
+# Copy src code to container
 
 COPY . .
 
-# -------- Stage 2: Distroless --------
-FROM gcr.io/distroless/python3-debian12:nonroot
+# Run the build commands
 
-WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy installed packages
-COPY --from=builder /app/package /app/package
-
-# Copy app code
-COPY --from=builder /app /app
-
-# Set PATH for packages
-ENV PYTHONPATH=/app/package
-
-ENV PYTHONUNBUFFERED=1
+# expose port 80
 
 EXPOSE 80
 
-CMD ["app.py"]
+# serve the app / run the app (keep it running)
+
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]
