@@ -19,7 +19,7 @@ jobs:
           python-version: "3.14"
 
       - name: Install dependencies
-        run: pip install -flake8 bandit
+        run: pip install flake8 bandit
 
       - name: run linter
         run: flake8 app.py
