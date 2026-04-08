@@ -6,7 +6,7 @@ on:
     workflow_call:
 
 jobs:
-    docker-lint:
+    validae-dockerfile:
         runs-on: ubuntu-latest
         steps:
             - name: code checkout
