@@ -10,15 +10,13 @@ jobs:
         uses: ./.github/workflows/code_check.yml
 
     scan-secret:
-        needs: code-quality
         uses: ./.github/workflows/secrets-scan.yml
 
     dependency-scan:
-        needs: scan-secret
         uses: ./.github/workflows/dependency-scan.yml
 
     docker-lint:
-        needs: dependency-scan
+        needs: [code-quality, scan-secret, dependency-scan]
         uses: ./.github/workflows/docker-lint.yml
 
     # Build once the security scans are comlete
