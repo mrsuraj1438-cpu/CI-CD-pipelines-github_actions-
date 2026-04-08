@@ -1,4 +1,4 @@
-# docker image scan for CVE' and vulnerabilities using trivy
+# docker image scan for CVE' and vulnerabilities
 # tool: trivy
 
 name: Image Scanner
