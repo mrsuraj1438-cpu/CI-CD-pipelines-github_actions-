@@ -1,0 +1,18 @@
+# scan the dockerfile for CVE's and misconfigurations
+# tool: hadolint can be used for dockerfile linting and scanning for CVE's
+
+name: Dockerfile Scan
+on:
+    workflow_call:
+
+jobs:
+    docker-lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v5
+
+            - name: scan dockerfile
+              uses: hadolint/hadolint-action@v3.3.0
+              with:
+                  dockerfile: Dockerfile
