@@ -1,0 +1,27 @@
+# docker image scan for CVE's
+# tool: trivy
+
+name: Image Scanner
+
+on:
+    workflow_call:
+
+jobs:
+    docker-image-scan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v5
+
+            - name: Login to Docker Hub
+              uses: docker/login-action@v3
+              with:
+                  username: ${{ vars.DOCKERHUB_USER }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Trivy image scan
+              uses: aquasecurity/trivy-action@0.35.0
+              with:
+                  image-ref: ${{ vars.DOCKERHUB_USER }}/git-hub-actions-app:latest
+                  severity: "CRITICAL"
+                  exit-code: "1"
