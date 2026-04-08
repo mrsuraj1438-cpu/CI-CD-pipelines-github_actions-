@@ -22,7 +22,7 @@ jobs:
             - name: Trivy image scan
               uses: aquasecurity/trivy-action@0.35.0
               with:
-                  image-ref: ${{vars.DOCKERHUB_USER}}/git-hub-actions-app:${{github.sha}}
+                  image-ref: ${{ vars.DOCKERHUB_USER }}/flask-app:${{ github.sha }}
                   severity: HIGH,CRITICAL
                   ignore-unfixed: true
                   exit-code: 1
