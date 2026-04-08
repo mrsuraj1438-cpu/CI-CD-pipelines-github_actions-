@@ -1,16 +1,21 @@
-
-FROM python:3.14
+# Use smaller & safer base
+FROM python:3.11-alpine
 
 WORKDIR /app
 
-RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
+# Copy only requirements first (better caching)
+COPY requirements.txt .
 
-COPY . .
-
+# Install dependencies (clean)
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 80 
+# Copy app code
+COPY . .
+
+# Run as non-root (security best practice)
+RUN adduser -D appuser
+USER appuser
+
+EXPOSE 80
 
 CMD ["python", "app.py"]
-
-
